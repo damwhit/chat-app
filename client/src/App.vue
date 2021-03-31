@@ -3,9 +3,6 @@
 </template>
 
 <script>
-import socket from './socket';
-socket.connect();
-
 import MessagesForm from './components/MessagesForm.vue'
 
 export default {
