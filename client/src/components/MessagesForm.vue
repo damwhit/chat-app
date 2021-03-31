@@ -1,7 +1,6 @@
 <template>
   <main>
     <section>
-      messages:
       <article 
         v-for="message in messages"
         :key="message"
@@ -10,8 +9,8 @@
       </article>
     </section>
     <form @submit.prevent="sendMessage">
-      <input v-model="currentMessage" type="text">
-      <input type="submit">
+      <input class="message-input" v-model="currentMessage" type="text">
+      <input class="message-submit" type="submit">
     </form>
   </main>
 </template>
@@ -32,15 +31,17 @@ export default {
   created() {
     socket.connect();
 
-    socket.on("message", (message) => {
-      this.messages.push(message);
-    });
+    socket.on("message", (message) => this.addMessage(message));
   },
 
   methods: {
     sendMessage() {
       socket.emit('message', this.currentMessage);
       this.currentMessage = '';
+    },
+
+    addMessage(message) {
+      this.messages.unshift(message);
     }
   },
 }
@@ -48,4 +49,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  section {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 90vh;
+    overflow: scroll;
+  }
+  
+  .message-input {
+    width: 88%;
+  }
 </style>
