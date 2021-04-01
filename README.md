@@ -7,6 +7,7 @@ This is a simple chat application that uses vue.js on the client and express on 
 - [Dependencies](#dependencies)
 - [Getting Started](#getting-started)
 - [Testing](#testing)
+- [Tradeoffs and Next Steps](#tradeoffs-and-next-steps)
 
 ## Dependencies
 - `node: ">=15.0.0"`
@@ -47,3 +48,8 @@ Testing has been implemented with cypress and is also ran from the `client` dire
 
 - If both of the servers are running, you can run the test suite with the command: `$ yarn run cy:test`
 - If they aren't running, run the test suite using the command: `$ yarn run start_and_test`
+
+## Tradeoffs and Next Steps
+
+- I wanted to focus on front-end for this app, so the backend lacks a db or any kind of persistence.
+- If I were to build out the front-end more I think that incorporating routing would make both user navigation and testing better.
