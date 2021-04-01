@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/damwhit/chat-app.svg?branch=main)](https://travis-ci.org/damwhit/chat-app)
+
 # AIM 2.0
 
 ## Overview
