@@ -1,12 +1,11 @@
 <template>
   <h2>Welcome, {{ currentUser }}</h2>
   <section class="messages">
-    <article 
+    <MessageInfo
       v-for="message in messages"
-      :key="message"
-    >
-      {{ message.user }}: {{ message.text }}
-    </article>
+      :key="message.timestamp"
+      :message="message"
+    />
   </section>
   <form class="message-form" @submit.prevent="sendMessage">
     <input 
@@ -21,9 +20,13 @@
 
 <script>
 import socket from '../socket';
+import MessageInfo from './MessageInfo.vue'
 
 export default {
   name: 'MessagesForm',
+  components: {
+    MessageInfo,
+  },
 
   props: {
     currentUser: {
@@ -47,6 +50,7 @@ export default {
   methods: {
     sendMessage() {
       socket.emit('message', { 
+        timestamp: Date.now(),
         user: this.currentUser,
         text: this.currentMessage,
       });
@@ -65,7 +69,7 @@ export default {
   section {
     display: flex;
     flex-direction: column-reverse;
-    height: 90vh;
+    height: 80vh;
     overflow: scroll;
   }
   

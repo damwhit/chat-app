@@ -22,7 +22,7 @@ import MessagesForm from './components/MessagesForm.vue'
 export default {
   name: 'App',
   components: {
-    MessagesForm
+    MessagesForm,
   },
 
   data() {
