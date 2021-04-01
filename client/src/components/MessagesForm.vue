@@ -1,6 +1,6 @@
 <template>
   <main>
-    <section>
+    <section class="messages">
       <article 
         v-for="message in messages"
         :key="message"
@@ -8,7 +8,7 @@
         {{ message }}
       </article>
     </section>
-    <form @submit.prevent="sendMessage">
+    <form class="message-form" @submit.prevent="sendMessage">
       <input class="message-input" v-model="currentMessage" type="text">
       <input class="message-submit" type="submit">
     </form>
