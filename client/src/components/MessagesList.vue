@@ -1,21 +1,23 @@
 <template>
-  <h2>Welcome, {{ currentUser }}</h2>
-  <section class="messages">
-    <MessageInfo
-      v-for="message in messages"
-      :key="message.timestamp"
-      :message="message"
-    />
-  </section>
-  <form class="message-form" @submit.prevent="sendMessage">
-    <input 
-      class="message-input" 
-      v-model="currentMessage" 
-      type="text" 
-      placeholder="Text message"
-    />
-    <input class="message-submit" type="submit" />
-  </form>
+  <div>
+    <h2>Welcome, {{ currentUser }}</h2>
+    <section class="messages">
+      <MessageInfo
+        v-for="message in messages"
+        :key="message.timestamp"
+        :message="message"
+      />
+    </section>
+    <form class="message-form" @submit.prevent="sendMessage">
+      <input 
+        class="message-input" 
+        v-model="currentMessage" 
+        type="text" 
+        placeholder="Text message"
+      />
+      <input class="message-submit" type="submit" />
+    </form>
+  </div>
 </template>
 
 <script>
@@ -23,7 +25,7 @@ import socket from '../socket';
 import MessageInfo from './MessageInfo.vue'
 
 export default {
-  name: 'MessagesForm',
+  name: 'MessagesList',
   components: {
     MessageInfo,
   },

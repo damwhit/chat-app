@@ -1,6 +1,6 @@
 <template>
   <main>
-    <MessagesForm 
+    <MessagesList 
       v-if="currentUser"
       :currentUser="currentUser"
     />
@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import MessagesForm from './components/MessagesForm.vue'
+import MessagesList from './components/MessagesList.vue'
 
 export default {
   name: 'App',
   components: {
-    MessagesForm,
+    MessagesList,
   },
 
   data() {
