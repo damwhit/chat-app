@@ -54,4 +54,5 @@ Testing has been implemented with cypress and is also ran from the `client` dire
 ## Tradeoffs and Next Steps
 
 - I wanted to focus on front-end for this app, so the backend lacks a db or any kind of persistence.
+- I'm not too happy with my test implementation. I went down a rabbit hole of trying to make a websocket request from one user and confirming that the other user could see it on the ui. With more time, I'd like to flesh that out.
 - If I were to build out the front-end more I think that incorporating routing would make both user navigation and testing better.
