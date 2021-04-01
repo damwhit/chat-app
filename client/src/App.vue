@@ -1,5 +1,19 @@
 <template>
-  <MessagesForm msg="Welcome to Your Vue.js App"/>
+  <main>
+    <MessagesForm 
+      v-if="currentUser"
+      :currentUser="currentUser"
+    />
+    <form class="user-form" v-else @submit.prevent="setCurrentUser">
+      <input 
+        class="user-input" 
+        v-model="userInput" 
+        type="text" 
+        placeholder="What is your name?"
+      />
+      <input class="user-submit" type="submit" />
+    </form>
+  </main>
 </template>
 
 <script>
@@ -9,7 +23,20 @@ export default {
   name: 'App',
   components: {
     MessagesForm
-  }
+  },
+
+  data() {
+    return {
+      userInput: '',
+      currentUser: null,
+    }
+  },
+
+  methods: {
+    setCurrentUser() {
+      this.currentUser = this.userInput;
+    },
+  },
 }
 </script>
 

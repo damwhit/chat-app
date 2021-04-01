@@ -6,10 +6,14 @@ describe('api', () => {
 });
 
 describe('client', () => {
-  it('confirms that we can send a message', () => {
+  it('can set a current user and send a message', () => {
     cy.visit('http://localhost:8080');
-    const message = "Hello, World";
 
+    cy.get('.user-input').type('Larry David');
+    cy.get('.user-form').submit();
+    cy.contains('Welcome, Larry David');
+
+    const message = "Hello, World";
     cy.get('.messages').contains(message).should('not.exist');
     cy.get('.message-input').type('Hello, World');
     cy.get('.message-form').submit();
