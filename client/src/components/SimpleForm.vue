@@ -8,7 +8,11 @@
       :class="type + '-input'" 
       :placeholder="placeholderText"
     />
-    <input :class="type + '-submit'" type="submit" />
+    <input 
+      :class="type + '-submit'" 
+      type="submit" 
+      :disabled="isEmpty"
+    />
   </form>
 </template>
 
@@ -26,12 +30,19 @@ export default {
       required: true,
     }, 
   },
+
   emits: ['onSubmit'],
+
   data() {
     return {
       currentInput: '',
     }
   },
+
+  computed: {
+    isEmpty() { return this.currentInput.length < 1 }
+  },
+
   methods: {
     onSubmit() {
       this.$emit('onSubmit', this.currentInput);

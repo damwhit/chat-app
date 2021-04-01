@@ -48,11 +48,11 @@ export default {
   },
 
   methods: {
-    sendMessage(currentMessage) {
+    sendMessage(messageInput) {
       socket.emit('message', { 
         timestamp: Date.now(),
         user: this.currentUser,
-        text: currentMessage,
+        text: messageInput,
       });
     },
 
@@ -63,7 +63,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   section {
     display: flex;

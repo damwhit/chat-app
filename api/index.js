@@ -13,7 +13,6 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
   io.emit('connection success');
   socket.on('message', (message) => {
     io.emit('message', message);
