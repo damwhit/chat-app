@@ -76,6 +76,6 @@ export default {
   }
   
   .message-input {
-    width: 88%;
+    width: 80%;
   }
 </style>

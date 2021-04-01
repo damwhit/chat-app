@@ -4,25 +4,24 @@
       v-if="currentUser"
       :currentUser="currentUser"
     />
-    <form class="user-form" v-else @submit.prevent="setCurrentUser">
-      <input 
-        class="user-input" 
-        v-model="userInput" 
-        type="text" 
-        placeholder="What is your name?"
-      />
-      <input class="user-submit" type="submit" />
-    </form>
+    <SimpleForm 
+      v-else
+      type="user"
+      placeholderText="What is your name?"
+      @onSubmit="setCurrentUser"
+    />
   </main>
 </template>
 
 <script>
 import MessagesList from './components/MessagesList.vue'
+import SimpleForm from './components/SimpleForm.vue'
 
 export default {
   name: 'App',
   components: {
     MessagesList,
+    SimpleForm,
   },
 
   data() {
@@ -33,8 +32,8 @@ export default {
   },
 
   methods: {
-    setCurrentUser() {
-      this.currentUser = this.userInput;
+    setCurrentUser(userInput) {
+      this.currentUser = userInput;
     },
   },
 }
