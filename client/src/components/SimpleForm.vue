@@ -1,6 +1,6 @@
 <template>
   <form :class="type + '-form'" 
-    @submit.prevent="$emit('onSubmit', currentInput)"
+    @submit.prevent="onSubmit"
   >
     <input 
       v-model="currentInput" 
@@ -32,8 +32,17 @@ export default {
       currentInput: '',
     }
   },
+  methods: {
+    onSubmit() {
+      this.$emit('onSubmit', this.currentInput);
+      this.currentInput = '';
+    },
+  },
 }
 </script>
 
 <style scoped>
+  .message-input {
+    width: 80%;
+  }
 </style>

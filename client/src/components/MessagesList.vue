@@ -8,26 +8,24 @@
         :message="message"
       />
     </section>
-    <form class="message-form" @submit.prevent="sendMessage">
-      <input 
-        class="message-input" 
-        v-model="currentMessage" 
-        type="text" 
-        placeholder="Text message"
-      />
-      <input class="message-submit" type="submit" />
-    </form>
+    <SimpleForm
+      type="message"
+      placeholderText="Text Message"
+      @onSubmit="sendMessage"
+    />
   </div>
 </template>
 
 <script>
 import socket from '../socket';
 import MessageInfo from './MessageInfo.vue'
+import SimpleForm from './SimpleForm.vue'
 
 export default {
   name: 'MessagesList',
   components: {
     MessageInfo,
+    SimpleForm,
   },
 
   props: {
@@ -50,13 +48,12 @@ export default {
   },
 
   methods: {
-    sendMessage() {
+    sendMessage(currentMessage) {
       socket.emit('message', { 
         timestamp: Date.now(),
         user: this.currentUser,
-        text: this.currentMessage,
+        text: currentMessage,
       });
-      this.currentMessage = '';
     },
 
     addMessage(message) {
@@ -73,9 +70,5 @@ export default {
     flex-direction: column-reverse;
     height: 80vh;
     overflow: scroll;
-  }
-  
-  .message-input {
-    width: 80%;
   }
 </style>
